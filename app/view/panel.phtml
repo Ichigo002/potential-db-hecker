@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>Hecker DB</title>
+        <link rel="icon" href="img/icon/logo.png"/>
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+        <style><?php echo file_get_contents($config["VIEW_PATH"].'style.css'); ?></style>
+        <script><?php echo file_get_contents($config["JS_PATH"].'jquery-3.6.0-min.js')?></script>
+    </head>
+    <body>
+        <header> 
+            <div class="title-header">
+                <img src="img/icon/logo.png"/>
+                Hecker DB
+            </div>
+            <div>App Status: <span class="good">Connected</span></div>
+            <div>Database: localhost-phpmyadmin</div>
+            <div>Port: 8000</div>
+            
+        </header>
+        <nav>
+            <button>Connect Database</button>
+            <button>Refresh</button>
+            <button>Import</button>
+            <button>Own SQL</button>
+        </nav>
+        <article class="left-article">
+            <div class="left-option" onclick="alegrt('Hello!')">Other Table</div>
+            <div class="left-option" onclick="alegrt('Hello!')">Other Table</div>
+            <div class="left-option" onclick="alfert('Hello!')">Other Table</div>
+            <div class="left-option" onclick="alefrt('Hello!')">Other Table</div>
+        </article>
+        <article style="width: calc(100% - 20%);">
+            <table class="result-tab">
+                <thead>
+                    <tr>
+                        <th>Table header 1</th>
+                        <th>Table header 2</th>
+                        <th>Table header 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                    </tr>
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                    </tr>
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                    </tr>
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                    </tr>
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                    </tr>
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                    </tr>
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        <footer>
+            <p>
+                PHP App has been created by 
+                <a href="http://naomi03.ga" target="_blank">Wiktor</a>
+                in 8/11/2022 to --/--/2022
+            </p>
+        </footer>
+    </body>
+</html>
