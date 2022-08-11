@@ -7,6 +7,8 @@
 
         <style><?php echo file_get_contents($config["VIEW_PATH"].'style.css'); ?></style>
         <script><?php echo file_get_contents($config["JS_PATH"].'jquery-3.6.0-min.js')?></script>
+        <script><?php echo file_get_contents($config["JS_PATH"].'dialog-window.js')?></script>
+        <script><?php echo file_get_contents($config["JS_PATH"].'caller.js')?></script>
     </head>
     <body>
         <header> 
@@ -20,16 +22,17 @@
             
         </header>
         <nav>
-            <button>Connect Database</button>
-            <button>Refresh</button>
-            <button>Import</button>
-            <button>Own SQL</button>
+            <button onclick="connectDatabase();">Connect Database</button>
+            <button onclick=";">Disconnect</button>
+            <button onclick=";">Refresh</button>
+            <button onclick=";">Export</button>
+            <button onclick=";">Own SQL</button>
         </nav>
         <article class="left-article">
-            <div class="left-option" onclick="alegrt('Hello!')">Other Table</div>
-            <div class="left-option" onclick="alegrt('Hello!')">Other Table</div>
-            <div class="left-option" onclick="alfert('Hello!')">Other Table</div>
-            <div class="left-option" onclick="alefrt('Hello!')">Other Table</div>
+            <div class="left-option" onclick="callTable(`1`);">Other Table</div>
+            <div class="left-option" onclick="callTable(`2`);">Other Table</div>
+            <div class="left-option" onclick="callTable(`3`);">Other Table</div>
+            <div class="left-option" onclick="callTable(`4`);">Other Table</div>
         </article>
         <article style="width: calc(100% - 20%);">
             <table class="result-tab">
