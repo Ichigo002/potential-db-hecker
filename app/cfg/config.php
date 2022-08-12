@@ -8,6 +8,7 @@ $config = [
     'LIB_PATH' => APP_PATH.DS.'lib'.DS,
     'CONTROLLERS_PATH' => APP_PATH.DS.'controllers'.DS,
     'JS_PATH' => APP_PATH.DS.'js'.DS,
+    'FONT_PATH' => APP_PATH.DS.'..'.DS.'fonts'.DS,
 ];
 
 require $config['LIB_PATH'].'func-lib.php';

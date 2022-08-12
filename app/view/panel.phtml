@@ -5,9 +5,12 @@
         <link rel="icon" href="img/icon/logo.png"/>
         <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
+        <style><?php echo file_get_contents($config["FONT_PATH"].'fontello'.DS.'css'.DS.'system-icons.css'); ?></style>
+        <style><?php echo file_get_contents($config["FONT_PATH"].'fontello'.DS.'css'.DS.'system-icons-embedded.css'); ?></style>
+        
         <style><?php echo file_get_contents($config["VIEW_PATH"].'style.css'); ?></style>
+        
         <script><?php echo file_get_contents($config["JS_PATH"].'jquery-3.6.0-min.js')?></script>
-        <script><?php echo file_get_contents($config["JS_PATH"].'dialog-window.js')?></script>
         <script><?php echo file_get_contents($config["JS_PATH"].'caller.js')?></script>
     </head>
     <body>
@@ -16,10 +19,9 @@
                 <img src="img/icon/logo.png"/>
                 Hecker DB
             </div>
-            <div>App Status: <span class="good">Connected</span></div>
-            <div>Database: localhost-phpmyadmin</div>
-            <div>Port: 8000</div>
-            
+            <div><i class="icon-status"></i> App Status: <span class="good">Connected <i class="icon-success"></i></span></div>
+            <div><i class="icon-db"></i> Database: localhost-phpmyadmin</div>
+            <div><i class="icon-port"></i> Port: 8000</div>
         </header>
         <nav>
             <button onclick="connectDatabase();">Connect Database</button>
@@ -29,10 +31,10 @@
             <button onclick=";">Own SQL</button>
         </nav>
         <article class="left-article">
-            <div class="left-option" onclick="callTable(`1`);">Other Table</div>
-            <div class="left-option" onclick="callTable(`2`);">Other Table</div>
-            <div class="left-option" onclick="callTable(`3`);">Other Table</div>
-            <div class="left-option" onclick="callTable(`4`);">Other Table</div>
+            <div class="left-option" onclick="callTable(`1`);"><i class="icon-table"></i> Other Table</div>
+            <div class="left-option" onclick="callTable(`2`);"><i class="icon-table"></i> Other Table</div>
+            <div class="left-option" onclick="callTable(`3`);"><i class="icon-table"></i> Other Table</div>
+            <div class="left-option" onclick="callTable(`4`);"><i class="icon-table"></i> Other Table</div>
         </article>
         <article style="width: calc(100% - 20%);">
             <table class="result-tab">
@@ -89,5 +91,36 @@
                 in 8/11/2022 to --/--/2022
             </p>
         </footer>
+        <!--SMALL WINDOWS-->
+        <div class="form-dialog">
+            <div class="form-header">
+                Connect Database
+                <div class="fh-exit">
+                    <i class="icon-exit"></i>
+                </div>
+            </div>
+            <div class="form-content">
+                <form action="index.php" method="POST">
+                    <p>
+                        <label for="hostname">Hostname</label>
+                        <input type="text" name="hostname"/>
+                    </p>
+                    <p>
+                    <label for="username">Username</label>
+                    <input type="text" name="username"/>
+                    </p>
+                    <p>
+                    <label for="password">Password</label>
+                    <input type="password" name="password"/>
+                    </p>
+                    <p>
+                    <label for="db_name">Database name</label>
+                    <input type="text" name="db_name"/>
+                    </p>
+
+                    <input type="submit" name="connect_db"/>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

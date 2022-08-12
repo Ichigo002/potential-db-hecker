@@ -145,3 +145,60 @@ table {
     thead {
         background-color: #343434;
     }
+
+/*FORM DIALOG*/
+
+.form-dialog {
+    position: absolute;
+    left: calc(50vw - 560px / 2);
+    top: calc(50vh - 375px / 2);
+    width: 560px;
+    height: 375px;
+
+    background-color: #545454;
+    border-radius: 5px;
+
+    -webkit-box-shadow: 5px 5px 10px 3px #252525;
+    -moz-box-shadow: 5px 5px 10px 3px #252525;
+    box-shadow: 5px 5px 10px 3px #252525;
+}
+
+    .form-header {
+        border-radius: 5px 5px 0 0;
+        padding: 2px;
+        margin-bottom: 5px;
+        height: 30px;
+        background-color: #fff;
+        color: #000000;
+        font-family: 'Righteous', cursive;
+        text-align: center;
+    }
+
+        .fh-exit {
+            float: right;
+            color: #f90000;
+
+            -webkit-transition: transform 0.3s ease-in-out;
+            -moz-transition: transform 0.3s ease-in-out;
+            -ms-transition: transform 0.3s ease-in-out;
+            -o-transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .fh-exit:hover {
+            transform: rotate(90deg);
+            cursor: pointer;
+        }
+
+    .form-content {
+        padding: 10px;
+    }
+
+    .form-content > form > p > input {
+        float: right;
+        margin-right: 10%;
+    }
+
+    .form-content > form > p > label {
+        margin-left: 10%;
+    }
