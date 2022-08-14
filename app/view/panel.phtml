@@ -19,68 +19,44 @@
                 <img src="img/icon/logo.png"/>
                 Hecker DB
             </div>
-            <div><i class="icon-status"></i> App Status: <span class="good">Connected <i class="icon-success"></i></span></div>
-            <div><i class="icon-db"></i> Database: localhost-phpmyadmin</div>
-            <div><i class="icon-port"></i> Port: 8000</div>
+            <div><i class="icon-status"></i> App Status: 
+                <span class="good" style="display: <?php echo $con ? "inline" : "none" ?>;">Connected <i class="icon-success"></i></span>
+                <span class="bad" style="display: <?php echo !$con ? "inline" : "none" ?>;">Unconnected <i class="icon-fail"></i></span>
+            </div>
+            <div><i class="icon-db"></i> Database: <?php echo $con ? $db_name : "" ?></div>
+            <div><i class="icon-port"></i> Host: <?php echo $con ? $host_details : "" ?></div>
         </header>
         <nav>
             <button onclick="connectDatabase();">Connect Database</button>
-            <button onclick=";">Disconnect</button>
-            <button onclick=";">Refresh</button>
-            <button onclick=";">Export</button>
-            <button onclick=";">Own SQL</button>
+            <span style="display: <?php echo $con ? "inline" : "none" ?>;">
+                <button onclick=";">Disconnect</button>
+                <button onclick=";">Refresh</button>
+                <button onclick=";">Export</button>
+                <button onclick=";">Own SQL</button>
+            </span>
         </nav>
         <article class="left-article">
-            <div class="left-option" onclick="callTable(`1`);"><i class="icon-table"></i> Other Table</div>
-            <div class="left-option" onclick="callTable(`2`);"><i class="icon-table"></i> Other Table</div>
-            <div class="left-option" onclick="callTable(`3`);"><i class="icon-table"></i> Other Table</div>
-            <div class="left-option" onclick="callTable(`4`);"><i class="icon-table"></i> Other Table</div>
+            <?php echo $con && !$empty_db ? $list_tab : ""; ?>
+            <span style="display: <?php echo !$con || $empty_db ? "inline" : "none" ?>;">
+                <div class="left-option" style="padding: 0"></div>
+            </span>
         </article>
         <article style="width: calc(100% - 20%);">
             <table class="result-tab">
                 <thead>
                     <tr>
-                        <th>Table header 1</th>
-                        <th>Table header 2</th>
-                        <th>Table header 2</th>
+                        <?php $tab_header; ?>
+                        <span>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        </span>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Data1</td>
-                        <td>Data2</td>
-                        <td>Data3</td>
-                    </tr>
-                    <tr>
-                        <td>Data1</td>
-                        <td>Data2</td>
-                        <td>Data3</td>
-                    </tr>
-                    <tr>
-                        <td>Data1</td>
-                        <td>Data2</td>
-                        <td>Data3</td>
-                    </tr>
-                    <tr>
-                        <td>Data1</td>
-                        <td>Data2</td>
-                        <td>Data3</td>
-                    </tr>
-                    <tr>
-                        <td>Data1</td>
-                        <td>Data2</td>
-                        <td>Data3</td>
-                    </tr>
-                    <tr>
-                        <td>Data1</td>
-                        <td>Data2</td>
-                        <td>Data3</td>
-                    </tr>
-                    <tr>
-                        <td>Data1</td>
-                        <td>Data2</td>
-                        <td>Data3</td>
-                    </tr>
+                    <?php echo $tab_body; ?>
+
+                    
                 </tbody>
             </table>
         </article>
@@ -117,8 +93,9 @@
                     <label for="db_name">Database name</label>
                     <input type="text" name="db_name"/>
                     </p>
-
-                    <input type="submit" name="connect_db"/>
+                    <div class="fc-submit">
+                        <input type="submit" name="connect_db" value="Connect!"/>
+                    </div>
                 </form>
             </div>
         </div>

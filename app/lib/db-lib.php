@@ -6,6 +6,10 @@ class Database {
     private $username = 'root';
     private $dbname   = 'work_time';*/
 
+    //ERRORS NUMBER
+    // 0 = Success connect!
+    // -3 = Fail to connect. Bad data or db doesn't exist
+
     private $hostname = 'localhost';
     private $password = '';
     private $username = 'root';
@@ -14,8 +18,13 @@ class Database {
     private $conn;
     private $result = null;
 
-    public function __construct() {
-        $this->connectdb();
+    public function __construct($host=null, $password=null, $username=null, $dbname=null) {
+        if($host != null) {
+            return $this->change_db($host, $password, $username, $dbname);
+        } else {
+            return $this->connectdb();
+        }
+        
     }
 
     // Change current connected database
@@ -25,7 +34,7 @@ class Database {
         $this->username = $username;
         $this->dbname = $dbname;
 
-        $this->connectdb();
+        return $this->connectdb();
     }
 
     // Call sql query to db
@@ -63,9 +72,10 @@ class Database {
         try {
             $this->conn = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
         } catch (\Throwable $th) {
-            echo "Failed to connect to MySQL Database";
-            exit();
+            return -3;
         }
+
+        return 0;
     }
 }
 
