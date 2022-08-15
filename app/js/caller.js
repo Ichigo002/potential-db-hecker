@@ -1,23 +1,4 @@
-function connectDatabase() {
-    
-}
-
-function disconnect() {
-
-}
-
-function refresh() {
-
-}
-
-function exportAction() {
-
-}
-
-function ownSQL() {
-
-}
-
-function callTable(name) {
-    console.log(`Tabel ${name} has been called`);
+function cancelConnectDB() {
+    $("#conndb").css('display', 'none');
+    $('#container').css('pointer-events', 'auto');    
 }

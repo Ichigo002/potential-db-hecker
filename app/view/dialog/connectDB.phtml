@@ -1,0 +1,31 @@
+<div class="form-dialog" id="conndb">
+    <div class="form-header">
+        Connect Database
+        <div class="fh-exit">
+            <i class="icon-exit" onclick="cancelConnectDB()"></i>
+        </div>
+    </div>
+    <div class="form-content">
+        <form action="index.php" method="POST">
+            <p>
+                <label for="hostname">Hostname</label>
+                <input type="text" name="hostname"/>
+            </p>
+            <p>
+            <label for="username">Username</label>
+            <input type="text" name="username"/>
+            </p>
+            <p>
+            <label for="password">Password</label>
+            <input type="password" name="password"/>
+            </p>
+            <p>
+            <label for="db_name">Database name</label>
+            <input type="text" name="db_name"/>
+            </p>
+            <div class="fc-submit">
+                <input type="submit" name="btn_connect_database" value="Connect!"/>
+            </div>
+        </form>
+    </div>
+</div>

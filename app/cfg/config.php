@@ -13,6 +13,7 @@ $config = [
 
 require $config['LIB_PATH'].'func-lib.php';
 require $config['LIB_PATH'].'db-lib.php';
+require $config['LIB_PATH'].'panel-lib.php';
 
 $_404  = $config['VIEW_PATH'].DS.'404.html';
 

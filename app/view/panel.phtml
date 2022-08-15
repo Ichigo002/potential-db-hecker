@@ -10,94 +10,62 @@
         
         <style><?php echo file_get_contents($config["VIEW_PATH"].'style.css'); ?></style>
         
+        <script>
+            var connected = <?php echo $con ? 'true' : 'false'; ?>;
+        </script>
         <script><?php echo file_get_contents($config["JS_PATH"].'jquery-3.6.0-min.js')?></script>
         <script><?php echo file_get_contents($config["JS_PATH"].'caller.js')?></script>
     </head>
     <body>
-        <header> 
-            <div class="title-header">
-                <img src="img/icon/logo.png"/>
-                Hecker DB
-            </div>
-            <div><i class="icon-status"></i> App Status: 
-                <span class="good" style="display: <?php echo $con ? "inline" : "none" ?>;">Connected <i class="icon-success"></i></span>
-                <span class="bad" style="display: <?php echo !$con ? "inline" : "none" ?>;">Unconnected <i class="icon-fail"></i></span>
-            </div>
-            <div><i class="icon-db"></i> Database: <?php echo $con ? $db_name : "" ?></div>
-            <div><i class="icon-port"></i> Host: <?php echo $con ? $host_details : "" ?></div>
-        </header>
-        <nav>
-            <button onclick="connectDatabase();">Connect Database</button>
-            <span style="display: <?php echo $con ? "inline" : "none" ?>;">
-                <button onclick=";">Disconnect</button>
-                <button onclick=";">Refresh</button>
-                <button onclick=";">Export</button>
-                <button onclick=";">Own SQL</button>
-            </span>
-        </nav>
-        <article class="left-article">
-            <?php echo $con && !$empty_db ? $list_tab : ""; ?>
-            <span style="display: <?php echo !$con || $empty_db ? "inline" : "none" ?>;">
-                <div class="left-option" style="padding: 0"></div>
-            </span>
-        </article>
-        <article style="width: calc(100% - 20%);">
-            <table class="result-tab">
-                <thead>
-                    <tr>
-                        <?php $tab_header; ?>
-                        <span>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        </span>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php echo $tab_body; ?>
-
-                    
-                </tbody>
-            </table>
-        </article>
-        <footer>
-            <p>
-                PHP App has been created by 
-                <a href="http://naomi03.ga" target="_blank">Wiktor</a>
-                in 8/11/2022 to --/--/2022
-            </p>
-        </footer>
-        <!--SMALL WINDOWS-->
-        <div class="form-dialog">
-            <div class="form-header">
-                Connect Database
-                <div class="fh-exit">
-                    <i class="icon-exit"></i>
+        <div id="container" style="pointer-events: <?php echo $dialog != null ? 'none' : 'auto'; ?>;">
+            <header> 
+                <div class="title-header">
+                    <img src="img/icon/logo.png"/>
+                    Hecker DB
                 </div>
-            </div>
-            <div class="form-content">
-                <form action="index.php" method="POST">
-                    <p>
-                        <label for="hostname">Hostname</label>
-                        <input type="text" name="hostname"/>
-                    </p>
-                    <p>
-                    <label for="username">Username</label>
-                    <input type="text" name="username"/>
-                    </p>
-                    <p>
-                    <label for="password">Password</label>
-                    <input type="password" name="password"/>
-                    </p>
-                    <p>
-                    <label for="db_name">Database name</label>
-                    <input type="text" name="db_name"/>
-                    </p>
-                    <div class="fc-submit">
-                        <input type="submit" name="connect_db" value="Connect!"/>
-                    </div>
-                </form>
-            </div>
+                <div><i class="icon-status"></i> App Status: 
+                    <span class="good" style="display: <?php echo $con ? "inline" : "none" ?>;">Connected <i class="icon-success"></i></span>
+                    <span class="bad" style="display: <?php echo !$con ? "inline" : "none" ?>;">Unconnected <i class="icon-fail"></i></span>
+                </div>
+                <div><i class="icon-db"></i> Database: <span class="good-data"><?php echo $con ? $db_name : "<span class='medium'>None</span>" ?></span></div>
+                <div><i class="icon-port"></i> Host: <span class="good-data"><?php echo $con ? $host_details : "<span class='medium'>None</span>" ?></span></div>
+            </header>
+            <nav>
+                <form><input type="submit" class="submit-nav" name="btn_display_connect_database" value="Connect Database"/></form>
+                <form><input type="submit" class="submit-nav" name="btn_disconnect" value="Disconnect"/></form>
+                <form><input type="submit" class="submit-nav" name="btn_refresh" value="Refresh"/></form>
+                <form><input type="submit" class="submit-nav" name="btn_display_export" value="Export"/></form>
+                <form><input type="submit" class="submit-nav" name="btn_display_ownsql" value="Own SQL"/></form>
+                <div style="clear: both;"></div>
+            </nav>
+            <article class="left-article">
+                <?php echo $con && !$empty_db ? $list_tab : ""; ?>
+                <span style="display: <?php echo !$con || $empty_db ? "inline" : "none" ?>;">
+                    <div class="left-option" style="padding: 0"></div>
+                </span>
+            </article>
+            <article style="width: calc(100% - 20%);">
+                <table class="result-tab">
+                    <thead>
+                        <tr>
+                            <?php echo $tab_header; ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php echo $tab_body; ?>
+
+
+                    </tbody>
+                </table>
+            </article>
+            <footer>
+                <p>
+                    PHP App has been created by 
+                    <a href="http://naomi03.ga" target="_blank">Wiktor</a>
+                    in 8/11/2022 to --/--/2022
+                </p>
+            </footer>
         </div>
+        <?php echo $dialog != null ? $dialog : ''; ?>
     </body>
 </html>

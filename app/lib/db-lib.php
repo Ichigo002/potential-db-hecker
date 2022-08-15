@@ -68,6 +68,10 @@ class Database {
         return $this->conn->real_escape_string($str);
     }
 
+    public function getConn() {
+        return $this->conn;
+    }
+
     protected function connectdb() {
         try {
             $this->conn = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
